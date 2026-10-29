@@ -10,5 +10,8 @@ BIN="$(swift build "${OPTIONS[@]}" --show-bin-path)"
 if [[ "${1:-}" == "--live" ]]; then
     export PORTLIGHT_INTEGRATION=1
     if command -v node >/dev/null 2>&1; then export PORTLIGHT_TEST_NODE="$(command -v node)"; fi
+    # The Xcode-bundled /usr/bin/python3 may be an embedded app runtime.
+    # Exercise the developer-installed Python from PATH, matching supported discovery.
+    if command -v python3 >/dev/null 2>&1; then export PORTLIGHT_TEST_PYTHON="$(command -v python3)"; fi
 fi
 "$BIN/PortlightChecks"

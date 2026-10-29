@@ -74,6 +74,7 @@ final class DiscoveryTests {
         expectNotNil(classify(record(executable: "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python", args: ["python3", "-m", "http.server"])))
         expectNotNil(classify(record(executable: "/Library/Frameworks/Python.framework/Versions/3.13/Resources/Python.app/Contents/MacOS/Python", args: ["python3", "-m", "http.server"])))
         expectNil(classify(record(executable: "/Applications/Tool.app/Contents/MacOS/Python", args: ["python3", "-m", "http.server"])))
+        expectNil(classify(record(executable: "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/Resources/Python.app/Contents/MacOS/Python", args: ["python3", "-m", "http.server"])))
     }
     func testCustomServerRequiresProjectButPythonHTTPWorksWithoutMarker() {
         expectNil(classify(record(args: ["node", "server.js"]), root: nil))

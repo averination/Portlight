@@ -12,7 +12,7 @@ Use macOS with Swift 6.0+ and Command Line Tools or Xcode. The live suite create
 
 ## 1.5.0 local result
 
-Built for arm64 on macOS 15.7.4 with Swift 6.1. Full checks: **35 passed, 0 skipped, 0 failures; 554 assertions**.
+Built for arm64 on macOS 15.7.4 with Swift 6.1. Full checks: **35 passed, 0 skipped, 0 failures; 555 assertions**.
 
 Covered:
 
@@ -28,4 +28,4 @@ Native installed-app checks include normal panel/empty state, archive project gr
 
 ## CI
 
-The included GitHub workflow builds and runs disposable live checks on a macOS 15 runner. A local passing run is not a claim that the remote workflow has already passed. Runner details: [GitHub-hosted runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).
+The included GitHub workflow builds and runs disposable live checks on a macOS 15 runner with a standalone Python 3.13. Xcode-embedded Python is intentionally excluded by discovery; fixtures use `PORTLIGHT_TEST_PYTHON` or the Python selected from PATH by the check script. A local passing run is not a claim that the remote workflow has already passed. Runner details: [GitHub-hosted runners](https://docs.github.com/en/actions/reference/runners/github-hosted-runners).

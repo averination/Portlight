@@ -7,7 +7,7 @@ final class LiveTests {
         let directory: URL
         let process = Process()
         let ready: URL
-        init(script: String, executable: String = "/usr/bin/python3", suffix: String = "py") throws {
+        init(script: String, executable: String = ProcessInfo.processInfo.environment["PORTLIGHT_TEST_PYTHON"] ?? "/usr/bin/python3", suffix: String = "py") throws {
             directory = FileManager.default.temporaryDirectory.appendingPathComponent("portlight-test-\(UUID().uuidString)")
             ready = directory.appendingPathComponent("ready")
             try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
