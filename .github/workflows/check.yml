@@ -1,0 +1,22 @@
+name: macOS checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: macos-15
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Toolchain
+        run: swift --version
+      - name: Build arm64 application
+        run: ./scripts/build-app.sh
+      - name: Run logic and disposable server checks
+        run: ./scripts/check.sh --live
